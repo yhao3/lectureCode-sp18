@@ -3,16 +3,27 @@ public class Lists1Exercises {
       * each element incremented by x. L is not allowed
       * to change. */
     public static IntList incrList(IntList L, int x) {
-        /* Your code here. */
-        return L;        
+        IntList Q = new IntList(0, null);
+        IntList pointerQ = Q;
+        IntList pointerL = L;
+        while(pointerL != null){
+            pointerQ.rest = new IntList(pointerL.first + x, null);
+            pointerQ = pointerQ.rest;
+            pointerL = pointerL.rest;
+        }
+        return Q.rest;      
     }
 
     /** Returns an IntList identical to L, but with
       * each element incremented by x. Not allowed to use
       * the 'new' keyword. */
     public static IntList dincrList(IntList L, int x) {
-        /* Your code here. */
-        return L;
+        IntList temp = L;
+        while (temp != null) {
+            temp.first += x;
+            temp = temp.rest;
+        }
+        return L; 
     }
 
     public static void main(String[] args) {
@@ -26,8 +37,9 @@ public class Lists1Exercises {
         // Test your answers by uncommenting. Or copy and paste the
         // code for incrList and dincrList into IntList.java and
         // run it in the visualizer.
-        // System.out.println(L.get(1));
-        // System.out.println(incrList(L, 3));
-        // System.out.println(dincrList(L, 3));        
+        System.out.println(L.get(1));
+        System.out.println(incrList(L, 3));
+        System.out.println(L);
+        System.out.println(dincrList(L, 3));        
     }
 }
